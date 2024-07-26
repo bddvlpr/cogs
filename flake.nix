@@ -24,20 +24,12 @@
       }: {
         formatter = pkgs.alejandra;
 
-        checks = {
-          format = let
-            inherit (inputs'.schemat.packages) schemat;
-          in
-            pkgs.stdenvNoCC.mkDerivation {
-              name = "format-check";
-              src = ./.;
-
-              buildInputs = [schemat];
-
-              buildPhase = ''
-                schemat -c "**/*.scm" > $out
-              '';
-            };
+        checks = let
+          inherit (inputs'.schemat.packages) schemat;
+        in {
+          fmt-alejandra = pkgs.callPackage ./checks/fmt-alejandra.nix {};
+          fmt-rustfmt = pkgs.callPackage ./checks/fmt-rustfmt.nix {};
+          fmt-schemat = pkgs.callPackage ./checks/fmt-schemat.nix {inherit schemat;};
         };
       };
     };
