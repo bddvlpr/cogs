@@ -1,0 +1,15 @@
+[package]
+name = "webrequests"
+version = "0.1.0"
+edition.workspace = true
+authors.workspace = true
+license.workspace = true
+publish.workspace = true
+
+[lib]
+crate-type = ["cdylib"]
+
+[dependencies]
+abi_stable = "0.11.3"
+steel-core.workspace = true
+ureq = { version = "2.10", features = ["json"] }
