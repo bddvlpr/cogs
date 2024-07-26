@@ -25,18 +25,17 @@
         formatter = pkgs.alejandra;
 
         checks = {
-          format-schemat = let
+          format = let
             inherit (inputs'.schemat.packages) schemat;
           in
             pkgs.stdenvNoCC.mkDerivation {
-              name = "format-schemat-check";
+              name = "format-check";
               src = ./.;
 
               buildInputs = [schemat];
 
               buildPhase = ''
-                mkdir $out
-                schemat -c "**/*.scm"
+                schemat -c "**/*.scm" > $out
               '';
             };
         };
