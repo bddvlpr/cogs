@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["cogs/webrequests"]
+members = ["cogs/webrequests", "cogs/websockets"]
 
 [workspace.package]
 edition = "2021"

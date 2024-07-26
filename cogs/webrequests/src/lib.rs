@@ -44,11 +44,13 @@ fn create_module() -> FFIModule {
 
 #[derive(Clone)]
 struct BlockingRequest(Option<Request>);
+#[allow(dead_code)]
 struct BlockingResponse(Response);
 
 #[derive(Clone)]
 struct Client(ureq::Agent);
 
+#[allow(dead_code)]
 enum BlockingError {
     Ureq(ureq::Error),
     ResponseAlreadyUsed,
